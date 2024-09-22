@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height of the viewport */
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        #clickButton {
+            background-color: #28a745; /* Green background */
+            color: white; /* White text color */
+            border: none; /* No border */
+            border-radius: 12px; /* Dull corners */
+            font-size: 20px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            outline: none; /* Remove outline */
+        }
+
+        #qrCodeContainer {
+            display: none; /* Initially hidden */
+            text-align: center; /* Center the QR code */
+            margin-top: 20px; /* Space between button and QR code */
+        }
+
+        img {
+            max-width: 100%; /* Make sure the image is responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+    </style>
+    <script>
+        function showQRCode() {
+            // Hide the button
+            document.getElementById("clickButton").style.display = "none";
+            // Show the QR code container
+            document.getElementById("qrCodeContainer").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+<button id="clickButton" onclick="showQRCode()">Click to see QR Code</button>
+
+<div id="qrCodeContainer">
+    <img th:src="'data:image/png;base64,' + ${qrCodeBase64}" alt="QR Code"/>
+</div>
+</body>
+</html>
